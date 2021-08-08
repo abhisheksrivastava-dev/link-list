@@ -1,17 +1,3 @@
-// Create the below linked list:
-// myLinkedList = {
-//   head: {
-//     value: 10
-//     next: {
-//       value: 5
-//       next: {
-//         value: 16
-//         next: null
-//       }
-//     }
-//   }
-// };
-
 class LinkedList {
     constructor(value) {
         this.head = {
@@ -78,6 +64,14 @@ class LinkedList {
         }
         return currentNode;
     }
+    remove(index) {
+        // Check Parameters      
+        const leader = this.traverseToIndex(index - 1);
+        const unwantedNode = leader.next;
+        leader.next = unwantedNode.next;
+        this.length--;
+        return this.printList();
+    }
 }
 
 let myLinkedList = new LinkedList(10);
@@ -85,3 +79,4 @@ myLinkedList.append(5);
 myLinkedList.append(16); myLinkedList.prepend(1);
 myLinkedList.insert(2, 99);
 myLinkedList.insert(20, 88);
+myLinkedList.remove(2);
